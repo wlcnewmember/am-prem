@@ -44,6 +44,31 @@
     .sub { font-size: 1rem; color: #8899bb; letter-spacing: 1px; font-weight: 800; }
     .divider { width: 80px; height: 3px; background: linear-gradient(90deg, #00d4ff, #7b2ffc); margin: 20px auto; border-radius: 10px; }
 
+    .note-box {
+      background: rgba(255, 200, 50, 0.05);
+      border: 1px solid rgba(255, 200, 50, 0.15);
+      border-radius: 12px;
+      padding: 14px 18px;
+      margin: 15px 0;
+      text-align: left;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .note-box i {
+      color: #fbbf24;
+      font-size: 1.2rem;
+      margin-top: 2px;
+    }
+
+    .note-box p {
+      font-size: 0.8rem;
+      color: #c0c8e0;
+      font-weight: 700;
+      line-height: 1.5;
+    }
+
     .akun-box {
       background: rgba(0, 20, 40, 0.5);
       border: 1px solid rgba(100, 200, 255, 0.1);
@@ -122,6 +147,22 @@
       background: rgba(0, 180, 255, 0.2);
     }
 
+    .btn-warning {
+      background: rgba(255, 200, 50, 0.1);
+      border: 1px solid rgba(255, 200, 50, 0.2);
+      color: #fbbf24;
+      font-weight: 700;
+      font-size: 0.8rem;
+      padding: 8px 16px;
+      border-radius: 40px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn-warning:hover {
+      background: rgba(255, 200, 50, 0.2);
+    }
+
     .footer {
       margin-top: 30px;
       font-size: 0.7rem;
@@ -163,6 +204,12 @@
     <i class="fas fa-bolt"></i> 132+ Akun Premium Tersedia
   </div>
 
+  <!-- NOTE CEK STATUS EMAIL -->
+  <div class="note-box">
+    <i class="fas fa-lightbulb"></i>
+    <p><strong>Cek Status Email:</strong> Buka generator untuk melihat apakah email masih aktif. Jika tidak aktif, klik <strong>"Ambil Akun Baru"</strong> untuk mendapatkan akun lain.</p>
+  </div>
+
   <div id="akunDisplay" class="akun-box">
     <p class="label"><i class="fas fa-envelope"></i> EMAIL</p>
     <p id="emailDisplay">-</p>
@@ -184,7 +231,7 @@
 </div>
 
 <script>
-  // ===== DATA AKUN (132+) DARI FILE YANG KAMU KIRIM =====
+  // ===== DATA AKUN =====
   const rawData = [
     "incentre@onlinecmail.com",
     "igorspam@trywayegrid.com",
@@ -231,20 +278,26 @@
     "maksimmaklyakov@navemrail.kr"
   ];
 
-  // Buat array akun dengan format { email, generatorLink }
   const akunList = rawData.map(email => ({
     email: email,
     generatorLink: `https://generator.email/${email}`
   }));
 
   let currentAkun = null;
+  let usedIndices = [];
 
   function ambilAkunAcak() {
-    if (akunList.length === 0) {
+    if (usedIndices.length >= akunList.length) {
       alert("Stok akun habis!");
       return null;
     }
-    const randomIndex = Math.floor(Math.random() * akunList.length);
+
+    let randomIndex;
+    do {
+      randomIndex = Math.floor(Math.random() * akunList.length);
+    } while (usedIndices.includes(randomIndex));
+
+    usedIndices.push(randomIndex);
     return akunList[randomIndex];
   }
 
