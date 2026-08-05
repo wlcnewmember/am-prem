@@ -3,15 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>AM Prem Free | Gratis Selamanya</title>
+  <title>AM Prem Free | Claim Otomatis</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Poppins:wght@700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       font-family: 'Poppins', sans-serif;
@@ -43,52 +39,34 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    .logo-icon {
-      font-size: 4rem;
-      background: linear-gradient(135deg, #00d4ff, #7b2ffc);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      margin-bottom: 15px;
+    .logo-icon { font-size: 4rem; background: linear-gradient(135deg, #00d4ff, #7b2ffc); -webkit-background-clip: text; background-clip: text; color: transparent; margin-bottom: 15px; }
+    h1 { font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 2.2rem; background: linear-gradient(135deg, #ffffff, #a0c0ff); -webkit-background-clip: text; background-clip: text; color: transparent; letter-spacing: 2px; margin-bottom: 10px; }
+    .sub { font-size: 1rem; color: #8899bb; letter-spacing: 1px; font-weight: 800; }
+    .divider { width: 80px; height: 3px; background: linear-gradient(90deg, #00d4ff, #7b2ffc); margin: 20px auto; border-radius: 10px; }
+
+    .akun-box {
+      background: rgba(0, 20, 40, 0.5);
+      border: 1px solid rgba(100, 200, 255, 0.1);
+      border-radius: 16px;
+      padding: 20px;
+      margin: 20px 0;
     }
 
-    h1 {
-      font-family: 'Orbitron', sans-serif;
-      font-weight: 700;
-      font-size: 2.2rem;
-      background: linear-gradient(135deg, #ffffff, #a0c0ff);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      letter-spacing: 2px;
-      margin-bottom: 10px;
+    .akun-box p {
+      font-size: 0.9rem;
+      color: #aac0f0;
+      margin: 8px 0;
+      word-break: break-all;
     }
 
-    .sub {
-      font-size: 1rem;
-      color: #8899bb;
+    .akun-box .label {
+      color: #667799;
+      font-size: 0.7rem;
       letter-spacing: 1px;
-      font-weight: 800;
-    }
-
-    .divider {
-      width: 80px;
-      height: 3px;
-      background: linear-gradient(90deg, #00d4ff, #7b2ffc);
-      margin: 20px auto;
-      border-radius: 10px;
-    }
-
-    .benefit {
-      font-size: 1.1rem;
-      color: #c0d0f0;
-      margin: 10px 0;
-      font-weight: 700;
-    }
-
-    .benefit i {
-      color: #00d4ff;
-      margin-right: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
     }
 
     .btn-primary {
@@ -102,7 +80,7 @@
       width: 100%;
       cursor: pointer;
       transition: 0.3s;
-      margin-top: 25px;
+      margin-top: 15px;
       letter-spacing: 1px;
       box-shadow: 0 0 30px rgba(0, 180, 255, 0.2);
     }
@@ -112,22 +90,36 @@
       box-shadow: 0 0 50px rgba(0, 180, 255, 0.4);
     }
 
-    .btn-secondary {
+    .btn-copy {
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid rgba(255, 255, 255, 0.1);
       color: white;
       font-weight: 700;
-      font-size: 0.9rem;
-      padding: 12px 20px;
-      border-radius: 60px;
-      width: 100%;
+      font-size: 0.8rem;
+      padding: 8px 16px;
+      border-radius: 40px;
       cursor: pointer;
       transition: 0.3s;
-      margin-top: 12px;
     }
 
-    .btn-secondary:hover {
+    .btn-copy:hover {
       background: rgba(255, 255, 255, 0.1);
+    }
+
+    .btn-generator {
+      background: rgba(0, 180, 255, 0.1);
+      border: 1px solid rgba(0, 180, 255, 0.2);
+      color: #88ccff;
+      font-weight: 700;
+      font-size: 0.8rem;
+      padding: 8px 16px;
+      border-radius: 40px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn-generator:hover {
+      background: rgba(0, 180, 255, 0.2);
     }
 
     .footer {
@@ -138,10 +130,7 @@
       letter-spacing: 1px;
     }
 
-    .footer i {
-      color: #00d4ff;
-      margin: 0 4px;
-    }
+    .footer i { color: #00d4ff; margin: 0 4px; }
 
     .badge {
       display: inline-block;
@@ -165,38 +154,28 @@
 <body>
 
 <div class="container">
-  <div class="logo-icon">
-    <i class="fas fa-crown"></i>
-  </div>
-
+  <div class="logo-icon"><i class="fas fa-crown"></i></div>
   <h1>AM PREM FREE</h1>
-  <div class="sub">Gratis Selamanya • Tanpa Batas</div>
-
+  <div class="sub">Claim Otomatis • Satu Klik</div>
   <div class="divider"></div>
 
-  <div class="benefit">
-    <i class="fas fa-check-circle"></i> Full Fitur Premium
-  </div>
-  <div class="benefit">
-    <i class="fas fa-check-circle"></i> Tanpa Watermark
-  </div>
-  <div class="benefit">
-    <i class="fas fa-check-circle"></i> Update Gratis
-  </div>
-  <div class="benefit">
-    <i class="fas fa-check-circle"></i> Garansi Resmi
+  <div class="badge" style="margin: 10px 0 5px;">
+    <i class="fas fa-bolt"></i> 132+ Akun Premium Tersedia
   </div>
 
-  <div class="badge" style="margin: 20px 0 10px;">
-    <i class="fas fa-bolt"></i> 100% LEGIT
+  <div id="akunDisplay" class="akun-box">
+    <p class="label"><i class="fas fa-envelope"></i> EMAIL</p>
+    <p id="emailDisplay">-</p>
+    <p class="label" style="margin-top: 12px;"><i class="fas fa-link"></i> GENERATOR EMAIL</p>
+    <p id="generatorDisplay">-</p>
+    <div style="margin-top: 12px; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+      <button class="btn-copy" id="copyEmailBtn"><i class="fas fa-copy"></i> Copy Email</button>
+      <button class="btn-generator" id="openGeneratorBtn"><i class="fas fa-external-link-alt"></i> Buka Generator</button>
+    </div>
   </div>
 
   <button class="btn-primary" id="claimBtn">
-    <i class="fas fa-gift"></i> CLAIM SEKARANG
-  </button>
-
-  <button class="btn-secondary" id="infoBtn">
-    <i class="fas fa-info-circle"></i> INFO LEBIH LANJUT
+    <i class="fas fa-gift"></i> Ambil Akun Baru
   </button>
 
   <div class="footer">
@@ -205,16 +184,110 @@
 </div>
 
 <script>
+  // ===== DATA AKUN (132+) DARI FILE YANG KAMU KIRIM =====
+  const rawData = [
+    "incentre@onlinecmail.com",
+    "igorspam@trywayegrid.com",
+    "atomixcs3@nowtopzen.com",
+    "erinlaurel@wameta.xyz",
+    "funnyfanin@trojangogogo.site",
+    "pilotbpsgpf@vaticamin.me",
+    "kazbekufa@ned53.sbs",
+    "toptimur2@evilgodshop2.uk",
+    "kirstywalkinshaw@byzoometri.com",
+    "txinkisviks@vuatrochoi.online",
+    "yanammalysova@warunko.com",
+    "fifapifa765@shahidrazi.online",
+    "gagjea@docbao7.com",
+    "aztatar1@docbao7.com",
+    "giustifico@gollums.blog",
+    "hwced@vmss.com",
+    "mxgretg@eilotikds.com",
+    "akishkuz@adsensekorea.com",
+    "illuno@jonsjav.cc",
+    "5043@meetingpoint-point.com",
+    "aismc2@ceria.cloud",
+    "nikolaymg@hdroom.us",
+    "gymavoski@globalinkerpro.com",
+    "rzisausz@kj-a.cc",
+    "azimkul@webucols.org",
+    "kutf@via17.com",
+    "kashtan4uk@baserdat.net",
+    "rome00283@yuki.ren",
+    "kmamyshkina@fmuss.com",
+    "gegetenen@thichmmo.com",
+    "matsuhag@yutec.cc",
+    "aveliseevj@adsensekorea.com",
+    "tanyashamysanikova@html.store",
+    "barbapapa@fbviamail.com",
+    "dnepr98@smartretireway.com",
+    "antoniobsa@smartretireway.com",
+    "heck200@pk-k2i.icu",
+    "danduclos@multicorse.com",
+    "rnk81@highstudios.net",
+    "tripleddd@extrau.shop",
+    "zingertwinger@code-gmail.com",
+    "pt1955@beinhoamarketing.com",
+    "maksimmaklyakov@navemrail.kr"
+  ];
+
+  // Buat array akun dengan format { email, generatorLink }
+  const akunList = rawData.map(email => ({
+    email: email,
+    generatorLink: `https://generator.email/${email}`
+  }));
+
+  let currentAkun = null;
+
+  function ambilAkunAcak() {
+    if (akunList.length === 0) {
+      alert("Stok akun habis!");
+      return null;
+    }
+    const randomIndex = Math.floor(Math.random() * akunList.length);
+    return akunList[randomIndex];
+  }
+
+  function tampilkanAkun(akun) {
+    if (!akun) return;
+    currentAkun = akun;
+    document.getElementById('emailDisplay').textContent = akun.email;
+    document.getElementById('generatorDisplay').textContent = akun.generatorLink;
+  }
+
   document.getElementById('claimBtn').addEventListener('click', function() {
-    // 🔴 NANTI GW KASIH TAU SISTEMNYA 🔴
-    alert("🔥 SISTEM CLAIM SEGERA HADIR!\n\nNanti kamu akan diarahkan ke halaman claim AM Prem Free.");
+    const akun = ambilAkunAcak();
+    if (akun) {
+      tampilkanAkun(akun);
+    } else {
+      alert("Stok akun habis! Coba lagi nanti.");
+    }
   });
 
-  document.getElementById('infoBtn').addEventListener('click', function() {
-    alert("📌 AM Prem Free\n\nAlight Motion Premium gratis selamanya.\nTanpa watermark, tanpa batas, dan tanpa biaya.\n\nSupport terus! 💙");
+  document.getElementById('copyEmailBtn').addEventListener('click', function() {
+    if (!currentAkun) {
+      alert("Ambil akun dulu!");
+      return;
+    }
+    navigator.clipboard.writeText(currentAkun.email).then(() => {
+      alert("Email berhasil disalin!");
+    }).catch(() => {
+      alert("Gagal menyalin, copy manual aja.");
+    });
   });
 
-  console.log("🔥 AM Prem Free siap!");
+  document.getElementById('openGeneratorBtn').addEventListener('click', function() {
+    if (!currentAkun) {
+      alert("Ambil akun dulu!");
+      return;
+    }
+    window.open(currentAkun.generatorLink, '_blank');
+  });
+
+  const firstAkun = ambilAkunAcak();
+  if (firstAkun) tampilkanAkun(firstAkun);
+
+  console.log("AM Prem Free siap - Stok:", akunList.length);
 </script>
 </body>
-  </html>
+</html>
