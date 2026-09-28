@@ -181,10 +181,6 @@
       gap: 10px;
     }
 
-    .navbar .brand i {
-      color: #a0a0b8;
-    }
-
     .nav-links {
       display: flex;
       gap: 8px;
@@ -203,49 +199,14 @@
       cursor: pointer;
     }
 
-    .nav-links a:hover,
-    .nav-links a.active {
+    .nav-links a:hover {
       background: rgba(160, 160, 184, 0.08);
       color: #e8e8f0;
-    }
-
-    .page {
-      display: none;
-      animation: fadeIn 0.5s ease;
-    }
-
-    .page.active {
-      display: block;
     }
 
     .hero {
       text-align: center;
       padding: 40px 20px 30px;
-    }
-
-    .hero .logo-icon {
-      width: 120px;
-      height: 120px;
-      margin: 0 auto 20px;
-      border-radius: 50%;
-      overflow: hidden;
-      border: 2px solid #a0a0b8;
-      box-shadow: 0 0 30px rgba(160, 160, 184, 0.08);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(26, 26, 34, 0.5);
-      animation: floatLogo 4s ease-in-out infinite;
-    }
-
-    @keyframes floatLogo {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-8px); }
-    }
-
-    .hero .logo-icon i {
-      font-size: 3.5rem;
-      color: #a0a0b8;
     }
 
     .hero h1 {
@@ -405,7 +366,6 @@
       .login-card { padding: 30px 20px; }
       .login-card h1 { font-size: 1.3rem; }
       .hero h1 { font-size: 2rem; }
-      .hero .logo-icon { width: 90px; height: 90px; }
     }
   </style>
 </head>
@@ -432,14 +392,13 @@
   <!-- ===== HALAMAN UTAMA ===== -->
   <div id="mainPage" class="main-page">
     <div class="navbar">
-      <div class="brand"><i class="fas fa-crown"></i> AM Prem Private Raul</div>
+      <div class="brand">AM Prem Private Raul</div>
       <div class="nav-links">
-        <a class="active" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Keluar</a>
+        <a onclick="logout()"><i class="fas fa-sign-out-alt"></i> Keluar</a>
       </div>
     </div>
 
     <div class="hero">
-      <div class="logo-icon"><i class="fas fa-crown"></i></div>
       <h1>AM PREM PRIVATE RAUL</h1>
       <div class="sub">Akses Terbatas</div>
 
@@ -476,15 +435,12 @@
   </div>
 
   <script>
-    // ===== KONFIGURASI =====
     const PASSWORD = "091112";
 
-    // ===== DATA AKUN (BAKAL DIAMBIL DARI akun.json) =====
     let akunList = [];
     let currentAkun = null;
     let usedIndices = [];
 
-    // ===== LOAD AKUN DARI JSON =====
     async function loadAkun() {
       try {
         const response = await fetch('akun.json');
@@ -500,7 +456,6 @@
       }
     }
 
-    // ===== CEK SANDI =====
     function checkPassword() {
       const input = document.getElementById('passwordInput').value.trim();
       const errorMsg = document.getElementById('errorMsg');
@@ -521,7 +476,6 @@
       }
     }
 
-    // ===== LOGOUT =====
     function logout() {
       sessionStorage.removeItem('loggedIn');
       document.getElementById('mainPage').classList.remove('active');
@@ -531,7 +485,6 @@
       usedIndices = [];
     }
 
-    // ===== AMBIL AKUN ACAK =====
     function ambilAkunAcak() {
       if (akunList.length === 0) {
         alert('Stok akun habis!');
@@ -548,7 +501,6 @@
       return akunList[randomIndex];
     }
 
-    // ===== TAMPILKAN AKUN =====
     function tampilkanAkun(akun) {
       if (!akun) return;
       currentAkun = akun;
@@ -556,13 +508,11 @@
       document.getElementById('generatorDisplay').textContent = akun.generatorLink;
     }
 
-    // ===== AMBIL AKUN BARU =====
     function ambilAkunBaru() {
       const akun = ambilAkunAcak();
       if (akun) tampilkanAkun(akun);
     }
 
-    // ===== COPY EMAIL =====
     function copyEmail() {
       if (!currentAkun) {
         alert('Ambil akun dulu!');
@@ -575,7 +525,6 @@
       });
     }
 
-    // ===== BUKA GENERATOR =====
     function openGenerator() {
       if (!currentAkun) {
         alert('Ambil akun dulu!');
@@ -584,7 +533,6 @@
       window.open(currentAkun.generatorLink, '_blank');
     }
 
-    // ===== AUTO LOGIN JIKA SUDAH LOGIN =====
     window.addEventListener('load', function() {
       if (sessionStorage.getItem('loggedIn') === 'true') {
         document.getElementById('loginPage').style.display = 'none';
@@ -595,7 +543,6 @@
       }
     });
 
-    // ===== ENTER UNTUK LOGIN =====
     document.getElementById('passwordInput').addEventListener('keypress', function(e) {
       if (e.key === 'Enter') checkPassword();
     });
@@ -604,4 +551,4 @@
   </script>
 
 </body>
-  </html>
+</html>
