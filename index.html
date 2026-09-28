@@ -3,315 +3,605 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>AM Prem Free | Claim Otomatis</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Poppins:wght@700;800;900&display=swap" rel="stylesheet">
+  <title>AM Prem Private Raul</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
     body {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 700;
-      background: radial-gradient(circle at 20% 30%, #0b0b1a, #000000);
-      color: #ffffff;
+      font-family: 'Inter', sans-serif;
+      background: #0f0f14;
+      color: #e8e8f0;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .bg-private {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: radial-gradient(ellipse at 30% 20%, #1a1a22, #0f0f14 70%);
+    }
+
+    .bg-private::before {
+      content: '';
+      position: absolute;
+      width: 150%;
+      height: 150%;
+      top: -30%;
+      left: -30%;
+      background: radial-gradient(circle at 60% 40%, rgba(160, 160, 184, 0.03), transparent 60%);
+      animation: silverFloat 18s ease-in-out infinite alternate;
+    }
+
+    @keyframes silverFloat {
+      0% { transform: translate(0,0) scale(1) rotate(0deg); }
+      100% { transform: translate(40px,30px) scale(1.06) rotate(2deg); }
+    }
+
+    /* ===== HALAMAN LOGIN ===== */
+    .login-page {
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 20px;
-    }
-
-    .container {
-      max-width: 600px;
-      width: 100%;
-      background: rgba(10, 10, 30, 0.85);
-      backdrop-filter: blur(20px);
-      border-radius: 40px;
-      border: 1px solid rgba(100, 200, 255, 0.15);
-      padding: 3rem 2rem;
-      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(100, 200, 255, 0.05) inset;
-      text-align: center;
-      animation: fadeUp 0.8s ease;
       position: relative;
+      z-index: 2;
     }
 
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(30px); }
+    .login-card {
+      max-width: 420px;
+      width: 100%;
+      background: rgba(26, 26, 34, 0.8);
+      backdrop-filter: blur(16px);
+      border-radius: 30px;
+      padding: 40px 30px;
+      border: 1px solid rgba(160, 160, 184, 0.08);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+      text-align: center;
+      animation: fadeIn 0.6s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    .lang-btn {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      color: #88ccff;
-      padding: 8px 16px;
-      border-radius: 40px;
-      font-size: 0.75rem;
-      cursor: pointer;
-      transition: 0.3s;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      gap: 8px;
+    .login-card .lock-icon {
+      font-size: 3.5rem;
+      color: #a0a0b8;
+      margin-bottom: 15px;
     }
 
-    .lang-btn:hover { background: rgba(255, 255, 255, 0.1); border-color: #00d4ff; }
-    .lang-btn i { font-size: 1rem; }
-
-    .logo-icon { font-size: 4rem; background: linear-gradient(135deg, #00d4ff, #7b2ffc); -webkit-background-clip: text; background-clip: text; color: transparent; margin-bottom: 15px; }
-    h1 { font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 2.2rem; background: linear-gradient(135deg, #ffffff, #a0c0ff); -webkit-background-clip: text; background-clip: text; color: transparent; letter-spacing: 2px; margin-bottom: 10px; }
-    .sub { font-size: 1rem; color: #8899bb; letter-spacing: 1px; font-weight: 800; }
-    .divider { width: 80px; height: 3px; background: linear-gradient(90deg, #00d4ff, #7b2ffc); margin: 20px auto; border-radius: 10px; }
-
-    .note-box {
-      background: rgba(255, 200, 50, 0.05);
-      border: 1px solid rgba(255, 200, 50, 0.15);
-      border-radius: 12px;
-      padding: 14px 18px;
-      margin: 15px 0;
-      text-align: left;
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-    }
-
-    .note-box i { color: #fbbf24; font-size: 1.2rem; margin-top: 2px; }
-    .note-box p { font-size: 0.8rem; color: #c0c8e0; font-weight: 700; line-height: 1.5; }
-
-    .akun-box {
-      background: rgba(0, 20, 40, 0.5);
-      border: 1px solid rgba(100, 200, 255, 0.1);
-      border-radius: 16px;
-      padding: 20px;
-      margin: 20px 0;
-    }
-
-    .akun-box p { font-size: 0.9rem; color: #aac0f0; margin: 8px 0; word-break: break-all; }
-    .akun-box .label { color: #667799; font-size: 0.7rem; letter-spacing: 1px; display: flex; align-items: center; justify-content: center; gap: 6px; }
-
-    .btn-primary {
-      background: linear-gradient(135deg, #00d4ff, #7b2ffc);
-      border: none;
-      color: white;
+    .login-card h1 {
+      font-size: 1.6rem;
       font-weight: 800;
-      font-size: 1.2rem;
-      padding: 18px 30px;
+      background: linear-gradient(135deg, #e8e8f0, #a0a0b8);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 6px;
+    }
+
+    .login-card p {
+      font-size: 0.8rem;
+      color: #9a9ab0;
+      margin-bottom: 25px;
+    }
+
+    .login-input {
+      width: 100%;
+      padding: 14px 18px;
+      background: rgba(15, 15, 20, 0.6);
+      border: 1px solid rgba(160, 160, 184, 0.1);
+      border-radius: 14px;
+      color: #e8e8f0;
+      font-size: 1rem;
+      outline: none;
+      transition: 0.3s;
+      font-family: 'Inter', sans-serif;
+      text-align: center;
+      letter-spacing: 4px;
+    }
+
+    .login-input:focus {
+      border-color: #a0a0b8;
+      box-shadow: 0 0 0 3px rgba(160, 160, 184, 0.05);
+      background: rgba(15, 15, 20, 0.8);
+    }
+
+    .btn-login {
+      background: linear-gradient(135deg, #3a3a48, #2a2a38);
+      border: 1px solid #a0a0b8;
+      color: #e8e8f0;
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 14px 30px;
       border-radius: 60px;
       width: 100%;
       cursor: pointer;
       transition: 0.3s;
-      margin-top: 15px;
-      letter-spacing: 1px;
-      box-shadow: 0 0 30px rgba(0, 180, 255, 0.2);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 20px;
     }
 
-    .btn-primary:hover { transform: scale(1.02); box-shadow: 0 0 50px rgba(0, 180, 255, 0.4); }
+    .btn-login:hover {
+      background: linear-gradient(135deg, #4a4a58, #3a3a48);
+      transform: scale(1.02);
+    }
 
-    .btn-copy {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      color: white;
-      font-weight: 700;
+    .error-msg {
+      color: #ef4444;
       font-size: 0.8rem;
-      padding: 8px 16px;
-      border-radius: 40px;
-      cursor: pointer;
-      transition: 0.3s;
+      margin-top: 12px;
+      display: none;
     }
 
-    .btn-copy:hover { background: rgba(255, 255, 255, 0.1); }
-
-    .btn-generator {
-      background: rgba(0, 180, 255, 0.1);
-      border: 1px solid rgba(0, 180, 255, 0.2);
-      color: #88ccff;
-      font-weight: 700;
-      font-size: 0.8rem;
-      padding: 8px 16px;
-      border-radius: 40px;
-      cursor: pointer;
-      transition: 0.3s;
+    /* ===== HALAMAN UTAMA ===== */
+    .main-page {
+      display: none;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 30px 20px 60px;
+      position: relative;
+      z-index: 2;
     }
 
-    .btn-generator:hover { background: rgba(0, 180, 255, 0.2); }
+    .main-page.active {
+      display: block;
+    }
 
-    .footer { margin-top: 30px; font-size: 0.7rem; color: #445577; font-weight: 700; letter-spacing: 1px; }
-    .footer i { color: #00d4ff; margin: 0 4px; }
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
 
-    .badge {
-      display: inline-block;
-      background: rgba(0, 180, 255, 0.1);
-      border: 1px solid rgba(0, 180, 255, 0.2);
-      padding: 6px 16px;
+    .navbar .brand {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #a0a0b8;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .navbar .brand i {
+      color: #a0a0b8;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: #9a9ab0;
+      text-decoration: none;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 8px 16px;
       border-radius: 30px;
-      font-size: 0.7rem;
-      color: #88ccff;
-      font-weight: 700;
-      letter-spacing: 1px;
+      transition: 0.3s;
+      cursor: pointer;
     }
 
-    @media (max-width: 600px) {
-      .container { padding: 2rem 1.5rem; }
-      h1 { font-size: 1.8rem; }
-      .logo-icon { font-size: 3rem; }
-      .lang-btn { top: 12px; right: 12px; padding: 5px 12px; font-size: 0.65rem; }
+    .nav-links a:hover,
+    .nav-links a.active {
+      background: rgba(160, 160, 184, 0.08);
+      color: #e8e8f0;
+    }
+
+    .page {
+      display: none;
+      animation: fadeIn 0.5s ease;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 40px 20px 30px;
+    }
+
+    .hero .logo-icon {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 20px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid #a0a0b8;
+      box-shadow: 0 0 30px rgba(160, 160, 184, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(26, 26, 34, 0.5);
+      animation: floatLogo 4s ease-in-out infinite;
+    }
+
+    @keyframes floatLogo {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .hero .logo-icon i {
+      font-size: 3.5rem;
+      color: #a0a0b8;
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #e8e8f0, #a0a0b8);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: 2px;
+    }
+
+    .hero .sub {
+      font-size: 0.75rem;
+      color: #9a9ab0;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-top: 5px;
+    }
+
+    .hero .motto {
+      font-size: 0.95rem;
+      color: #b0b0c8;
+      max-width: 500px;
+      margin: 25px auto;
+      padding: 16px 0;
+      border-top: 1px solid rgba(160, 160, 184, 0.08);
+      border-bottom: 1px solid rgba(160, 160, 184, 0.08);
+      font-weight: 300;
+    }
+
+    .hero .motto i {
+      color: #a0a0b8;
+      margin: 0 8px;
+    }
+
+    .note-box {
+      background: rgba(160, 160, 184, 0.03);
+      border: 1px solid rgba(160, 160, 184, 0.1);
+      border-radius: 14px;
+      padding: 14px 18px;
+      margin: 20px auto;
+      max-width: 550px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      text-align: left;
+    }
+
+    .note-box i {
+      color: #a0a0b8;
+      font-size: 1.1rem;
+      margin-top: 2px;
+    }
+
+    .note-box p {
+      font-size: 0.78rem;
+      color: #b0b0c8;
+      line-height: 1.5;
+    }
+
+    .account-box {
+      max-width: 550px;
+      margin: 20px auto;
+      background: rgba(26, 26, 34, 0.6);
+      backdrop-filter: blur(8px);
+      border-radius: 20px;
+      padding: 22px;
+      border: 1px solid rgba(160, 160, 184, 0.06);
+    }
+
+    .account-box .label {
+      color: #8a8aa0;
+      font-size: 0.7rem;
+      letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      margin-bottom: 6px;
+    }
+
+    .account-box .label i {
+      color: #a0a0b8;
+    }
+
+    .account-box .value {
+      color: #e8e8f0;
+      font-size: 0.9rem;
+      word-break: break-all;
+      font-family: monospace;
+      margin-bottom: 12px;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #3a3a48, #2a2a38);
+      border: 1px solid #a0a0b8;
+      color: #e8e8f0;
+      font-weight: 700;
+      font-size: 0.9rem;
+      padding: 14px 40px;
+      border-radius: 60px;
+      cursor: pointer;
+      transition: 0.3s;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #4a4a58, #3a3a48);
+      transform: scale(1.02);
+    }
+
+    .btn-secondary {
+      background: rgba(160, 160, 184, 0.05);
+      border: 1px solid rgba(160, 160, 184, 0.15);
+      color: #b0b0c8;
+      font-weight: 600;
+      font-size: 0.8rem;
+      padding: 10px 20px;
+      border-radius: 40px;
+      cursor: pointer;
+      transition: 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(160, 160, 184, 0.1);
+      color: #e8e8f0;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 0.6rem;
+      color: #5a5a6a;
+      border-top: 1px solid rgba(160, 160, 184, 0.04);
+      padding-top: 20px;
+    }
+
+    .footer i {
+      color: #a0a0b8;
+    }
+
+    @media (max-width: 480px) {
+      .login-card { padding: 30px 20px; }
+      .login-card h1 { font-size: 1.3rem; }
+      .hero h1 { font-size: 2rem; }
+      .hero .logo-icon { width: 90px; height: 90px; }
     }
   </style>
 </head>
 <body>
 
-<div class="container">
+  <div class="bg-private"></div>
 
-  <!-- TOMBOL BAHASA -->
-  <button class="lang-btn" id="langToggle" onclick="toggleLanguage()">
-    <i class="fas fa-language"></i> <span id="langLabel">ID</span>
-  </button>
+  <!-- ===== HALAMAN LOGIN ===== -->
+  <div id="loginPage" class="login-page">
+    <div class="login-card">
+      <div class="lock-icon"><i class="fas fa-lock"></i></div>
+      <h1>AM PREM PRIVATE RAUL</h1>
+      <p>Masukkan sandi untuk mengakses akun</p>
 
-  <div class="logo-icon"><i class="fas fa-crown"></i></div>
-  <h1>AM PREM FREE</h1>
-  <div class="sub">Claim Otomatis • Satu Klik</div>
-  <div class="divider"></div>
+      <input type="password" id="passwordInput" class="login-input" placeholder="••••••" maxlength="10" autocomplete="off">
+      <div class="error-msg" id="errorMsg">Sandi salah! Coba lagi.</div>
 
-  <div class="badge" style="margin: 10px 0 5px;">
-    <i class="fas fa-bolt"></i> <span id="badgeText">Memuat akun...</span>
-  </div>
-
-  <!-- NOTE CEK STATUS EMAIL -->
-  <div class="note-box">
-    <i class="fas fa-lightbulb"></i>
-    <p id="noteText"><strong>Cek Status Email:</strong> Buka generator untuk melihat apakah email masih aktif. Jika tidak aktif, klik <strong>"Ambil Akun Baru"</strong> untuk mendapatkan akun lain.</p>
-  </div>
-
-  <div id="akunDisplay" class="akun-box">
-    <p class="label"><i class="fas fa-envelope"></i> <span id="labelEmail">EMAIL</span></p>
-    <p id="emailDisplay">-</p>
-    <p class="label" style="margin-top: 12px;"><i class="fas fa-link"></i> <span id="labelGenerator">GENERATOR EMAIL</span></p>
-    <p id="generatorDisplay">-</p>
-    <div style="margin-top: 12px; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
-      <button class="btn-copy" id="copyEmailBtn"><i class="fas fa-copy"></i> <span id="btnCopy">Copy Email</span></button>
-      <button class="btn-generator" id="openGeneratorBtn"><i class="fas fa-external-link-alt"></i> <span id="btnGenerator">Buka Generator</span></button>
+      <button class="btn-login" onclick="checkPassword()">
+        <i class="fas fa-unlock"></i> MASUK
+      </button>
     </div>
   </div>
 
-  <button class="btn-primary" id="claimBtn">
-    <i class="fas fa-gift"></i> <span id="btnClaim">Ambil Akun Baru</span>
-  </button>
+  <!-- ===== HALAMAN UTAMA ===== -->
+  <div id="mainPage" class="main-page">
+    <div class="navbar">
+      <div class="brand"><i class="fas fa-crown"></i> AM Prem Private Raul</div>
+      <div class="nav-links">
+        <a class="active" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Keluar</a>
+      </div>
+    </div>
 
-  <div class="footer">
-    <i class="fas fa-copyright"></i> 2025 • AM Prem Free
+    <div class="hero">
+      <div class="logo-icon"><i class="fas fa-crown"></i></div>
+      <h1>AM PREM PRIVATE RAUL</h1>
+      <div class="sub">Akses Terbatas</div>
+
+      <div class="motto">
+        <i class="fas fa-quote-left"></i>
+        Alight Motion Premium — Akses Private Khusus.
+        <i class="fas fa-quote-right"></i>
+      </div>
+
+      <div class="note-box">
+        <i class="fas fa-lightbulb"></i>
+        <p><strong>Cek Status Email:</strong> Buka generator untuk melihat apakah email masih aktif. Jika tidak aktif, klik "Ambil Akun Baru" untuk mendapatkan akun lain.</p>
+      </div>
+
+      <div class="account-box">
+        <div class="label"><i class="fas fa-envelope"></i> EMAIL</div>
+        <div class="value" id="emailDisplay">-</div>
+
+        <div class="label"><i class="fas fa-link"></i> GENERATOR EMAIL</div>
+        <div class="value" id="generatorDisplay">-</div>
+
+        <div class="btn-group">
+          <button class="btn-secondary" onclick="copyEmail()"><i class="fas fa-copy"></i> Copy Email</button>
+          <button class="btn-secondary" onclick="openGenerator()"><i class="fas fa-external-link-alt"></i> Buka Generator</button>
+        </div>
+      </div>
+
+      <button class="btn-primary" onclick="ambilAkunBaru()">
+        <i class="fas fa-gift"></i> AMBIL AKUN BARU
+      </button>
+    </div>
+
+    <div class="footer"><i class="fas fa-copyright"></i> 2026 • AM Prem Private Raul</div>
   </div>
-</div>
 
-<script>
-  let akunList = [];
-  let currentAkun = null;
-  let usedIndices = [];
-  let lang = 'id';
+  <script>
+    // ===== KONFIGURASI =====
+    const PASSWORD = "091112";
 
-  // ===== LOAD AKUN DARI FILE JSON =====
-  async function loadAkun() {
-    try {
-      const response = await fetch('akun.json');
-      const rawData = await response.json();
-      akunList = rawData.map(email => ({
-        email: email,
-        generatorLink: `https://generator.email/${email}`
-      }));
-      document.getElementById('badgeText').textContent = akunList.length + ' Akun Premium Tersedia';
-      const firstAkun = ambilAkunAcak();
-      if (firstAkun) tampilkanAkun(firstAkun);
-    } catch (e) {
-      console.error('Gagal load akun:', e);
-      document.getElementById('badgeText').textContent = 'Gagal memuat akun';
-    }
-  }
+    // ===== DATA AKUN (BAKAL DIAMBIL DARI akun.json) =====
+    let akunList = [];
+    let currentAkun = null;
+    let usedIndices = [];
 
-  function ambilAkunAcak() {
-    if (usedIndices.length >= akunList.length) {
-      alert('Stok akun habis!');
-      return null;
-    }
-    let randomIndex;
-    do {
-      randomIndex = Math.floor(Math.random() * akunList.length);
-    } while (usedIndices.includes(randomIndex));
-    usedIndices.push(randomIndex);
-    return akunList[randomIndex];
-  }
-
-  function tampilkanAkun(akun) {
-    if (!akun) return;
-    currentAkun = akun;
-    document.getElementById('emailDisplay').textContent = akun.email;
-    document.getElementById('generatorDisplay').textContent = akun.generatorLink;
-  }
-
-  // ===== EVENT LISTENER =====
-  document.getElementById('claimBtn').addEventListener('click', function() {
-    const akun = ambilAkunAcak();
-    if (akun) tampilkanAkun(akun);
-    else alert('Stok akun habis!');
-  });
-
-  document.getElementById('copyEmailBtn').addEventListener('click', function() {
-    if (!currentAkun) { alert('Ambil akun dulu!'); return; }
-    navigator.clipboard.writeText(currentAkun.email).then(() => {
-      alert('Email berhasil disalin!');
-    }).catch(() => {
-      alert('Gagal menyalin, copy manual aja.');
-    });
-  });
-
-  document.getElementById('openGeneratorBtn').addEventListener('click', function() {
-    if (!currentAkun) { alert('Ambil akun dulu!'); return; }
-    window.open(currentAkun.generatorLink, '_blank');
-  });
-
-  // ===== TERJEMAHAN =====
-  function toggleLanguage() {
-    lang = (lang === 'id') ? 'en' : 'id';
-    document.getElementById('langLabel').textContent = lang.toUpperCase();
-    updateTranslation();
-  }
-
-  function updateTranslation() {
-    const texts = {
-      id: {
-        badge: akunList.length + ' Akun Premium Tersedia',
-        note: '<strong>Cek Status Email:</strong> Buka generator untuk melihat apakah email masih aktif. Jika tidak aktif, klik <strong>"Ambil Akun Baru"</strong> untuk mendapatkan akun lain.',
-        labelEmail: 'EMAIL',
-        labelGenerator: 'GENERATOR EMAIL',
-        btnCopy: 'Copy Email',
-        btnGenerator: 'Buka Generator',
-        btnClaim: 'Ambil Akun Baru'
-      },
-      en: {
-        badge: akunList.length + ' Premium Accounts Available',
-        note: '<strong>Check Email Status:</strong> Open the generator to see if the email is still active. If not active, click <strong>"Get New Account"</strong> to get another account.',
-        labelEmail: 'EMAIL',
-        labelGenerator: 'EMAIL GENERATOR',
-        btnCopy: 'Copy Email',
-        btnGenerator: 'Open Generator',
-        btnClaim: 'Get New Account'
+    // ===== LOAD AKUN DARI JSON =====
+    async function loadAkun() {
+      try {
+        const response = await fetch('akun.json');
+        const rawData = await response.json();
+        akunList = rawData.map(email => ({
+          email: email,
+          generatorLink: `https://generator.email/${email}`
+        }));
+        console.log('Total akun:', akunList.length);
+      } catch (e) {
+        console.error('Gagal load akun.json:', e);
+        akunList = [];
       }
-    };
+    }
 
-    const t = texts[lang];
-    document.getElementById('badgeText').innerHTML = t.badge;
-    document.getElementById('noteText').innerHTML = t.note;
-    document.getElementById('labelEmail').textContent = t.labelEmail;
-    document.getElementById('labelGenerator').textContent = t.labelGenerator;
-    document.getElementById('btnCopy').textContent = t.btnCopy;
-    document.getElementById('btnGenerator').textContent = t.btnGenerator;
-    document.getElementById('btnClaim').textContent = t.btnClaim;
-  }
+    // ===== CEK SANDI =====
+    function checkPassword() {
+      const input = document.getElementById('passwordInput').value.trim();
+      const errorMsg = document.getElementById('errorMsg');
 
-  // ===== START =====
-  loadAkun();
-  console.log('AM Prem Free siap!');
-</script>
+      if (input === PASSWORD) {
+        document.getElementById('loginPage').style.display = 'none';
+        document.getElementById('mainPage').classList.add('active');
+        sessionStorage.setItem('loggedIn', 'true');
+        loadAkun().then(() => {
+          ambilAkunBaru();
+        });
+      } else {
+        errorMsg.style.display = 'block';
+        document.getElementById('passwordInput').value = '';
+        setTimeout(() => {
+          errorMsg.style.display = 'none';
+        }, 3000);
+      }
+    }
+
+    // ===== LOGOUT =====
+    function logout() {
+      sessionStorage.removeItem('loggedIn');
+      document.getElementById('mainPage').classList.remove('active');
+      document.getElementById('loginPage').style.display = 'flex';
+      document.getElementById('passwordInput').value = '';
+      currentAkun = null;
+      usedIndices = [];
+    }
+
+    // ===== AMBIL AKUN ACAK =====
+    function ambilAkunAcak() {
+      if (akunList.length === 0) {
+        alert('Stok akun habis!');
+        return null;
+      }
+      if (usedIndices.length >= akunList.length) {
+        usedIndices = [];
+      }
+      let randomIndex;
+      do {
+        randomIndex = Math.floor(Math.random() * akunList.length);
+      } while (usedIndices.includes(randomIndex));
+      usedIndices.push(randomIndex);
+      return akunList[randomIndex];
+    }
+
+    // ===== TAMPILKAN AKUN =====
+    function tampilkanAkun(akun) {
+      if (!akun) return;
+      currentAkun = akun;
+      document.getElementById('emailDisplay').textContent = akun.email;
+      document.getElementById('generatorDisplay').textContent = akun.generatorLink;
+    }
+
+    // ===== AMBIL AKUN BARU =====
+    function ambilAkunBaru() {
+      const akun = ambilAkunAcak();
+      if (akun) tampilkanAkun(akun);
+    }
+
+    // ===== COPY EMAIL =====
+    function copyEmail() {
+      if (!currentAkun) {
+        alert('Ambil akun dulu!');
+        return;
+      }
+      navigator.clipboard.writeText(currentAkun.email).then(() => {
+        alert('Email berhasil disalin!');
+      }).catch(() => {
+        alert('Gagal menyalin, copy manual aja.');
+      });
+    }
+
+    // ===== BUKA GENERATOR =====
+    function openGenerator() {
+      if (!currentAkun) {
+        alert('Ambil akun dulu!');
+        return;
+      }
+      window.open(currentAkun.generatorLink, '_blank');
+    }
+
+    // ===== AUTO LOGIN JIKA SUDAH LOGIN =====
+    window.addEventListener('load', function() {
+      if (sessionStorage.getItem('loggedIn') === 'true') {
+        document.getElementById('loginPage').style.display = 'none';
+        document.getElementById('mainPage').classList.add('active');
+        loadAkun().then(() => {
+          ambilAkunBaru();
+        });
+      }
+    });
+
+    // ===== ENTER UNTUK LOGIN =====
+    document.getElementById('passwordInput').addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') checkPassword();
+    });
+
+    console.log('AM Prem Private Raul siap!');
+  </script>
+
 </body>
-</html>
+  </html>
