@@ -1014,4 +1014,156 @@
   </div>
 
   <script>
-    const PASSWORD = "
+    const PASSWORD = "091112";
+
+    let akunList = [];
+    let currentAkun = null;
+    let usedIndices = [];
+
+    async function loadAkun() {
+      try {
+        const response = await fetch('akun.json');
+        const rawData = await response.json();
+        akunList = rawData.map(email => ({
+          email: email,
+          generatorLink: `https://generator.email/${email}`
+        }));
+        console.log('Total akun:', akunList.length);
+      } catch (e) {
+        console.error('Gagal load akun.json:', e);
+        akunList = [];
+      }
+    }
+
+    // ===== LOADING SCREEN ANIMATION =====
+    function showLoadingScreen(callback) {
+      const screen = document.getElementById('loadingScreen');
+      const fill = document.getElementById('progressFill');
+      const percentText = document.getElementById('percentText');
+      const statusText = document.getElementById('statusText');
+
+      screen.classList.add('active');
+
+      const steps = [
+        { progress: 20, status: 'Memverifikasi sandi...', delay: 0 },
+        { progress: 50, status: 'Memuat data akun...', delay: 700 },
+        { progress: 80, status: 'Menyiapkan akses...', delay: 1400 },
+        { progress: 100, status: 'Selesai!', delay: 2000 }
+      ];
+
+      steps.forEach(step => {
+        setTimeout(() => {
+          fill.style.width = step.progress + '%';
+          percentText.textContent = step.progress + '%';
+          statusText.textContent = step.status;
+        }, step.delay);
+      });
+
+      setTimeout(() => {
+        screen.classList.add('fade-out');
+        setTimeout(() => {
+          screen.classList.remove('active', 'fade-out');
+          if (callback) callback();
+        }, 600);
+      }, 2500);
+    }
+
+    function checkPassword() {
+      const input = document.getElementById('passwordInput').value.trim();
+      const errorMsg = document.getElementById('errorMsg');
+
+      if (input === PASSWORD) {
+        document.getElementById('loginPage').classList.remove('active');
+
+        showLoadingScreen(() => {
+          document.getElementById('mainPage').classList.add('active');
+          sessionStorage.setItem('loggedIn', 'true');
+          loadAkun().then(() => {
+            ambilAkunBaru();
+          });
+        });
+      } else {
+        errorMsg.style.display = 'flex';
+        document.getElementById('passwordInput').value = '';
+        setTimeout(() => {
+          errorMsg.style.display = 'none';
+        }, 3000);
+      }
+    }
+
+    function logout() {
+      sessionStorage.removeItem('loggedIn');
+      document.getElementById('mainPage').classList.remove('active');
+      document.getElementById('loginPage').classList.add('active');
+      document.getElementById('passwordInput').value = '';
+      currentAkun = null;
+      usedIndices = [];
+    }
+
+    function ambilAkunAcak() {
+      if (akunList.length === 0) {
+        alert('Stok akun habis!');
+        return null;
+      }
+      if (usedIndices.length >= akunList.length) {
+        usedIndices = [];
+      }
+      let randomIndex;
+      do {
+        randomIndex = Math.floor(Math.random() * akunList.length);
+      } while (usedIndices.includes(randomIndex));
+      usedIndices.push(randomIndex);
+      return akunList[randomIndex];
+    }
+
+    function tampilkanAkun(akun) {
+      if (!akun) return;
+      currentAkun = akun;
+      document.getElementById('emailDisplay').textContent = akun.email;
+      document.getElementById('generatorDisplay').textContent = akun.generatorLink;
+    }
+
+    function ambilAkunBaru() {
+      const akun = ambilAkunAcak();
+      if (akun) tampilkanAkun(akun);
+    }
+
+    function copyEmail() {
+      if (!currentAkun) {
+        alert('Ambil akun dulu!');
+        return;
+      }
+      navigator.clipboard.writeText(currentAkun.email).then(() => {
+        alert('Email berhasil disalin!');
+      }).catch(() => {
+        alert('Gagal menyalin, copy manual aja.');
+      });
+    }
+
+    function openGenerator() {
+      if (!currentAkun) {
+        alert('Ambil akun dulu!');
+        return;
+      }
+      window.open(currentAkun.generatorLink, '_blank');
+    }
+
+    window.addEventListener('load', function() {
+      if (sessionStorage.getItem('loggedIn') === 'true') {
+        document.getElementById('loginPage').classList.remove('active');
+        document.getElementById('mainPage').classList.add('active');
+        loadAkun().then(() => {
+          ambilAkunBaru();
+        });
+      }
+    });
+
+    document.getElementById('passwordInput').addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') checkPassword();
+    });
+
+    console.log('AM Prem Private Raul siap!');
+  </script>
+
+</body>
+</html>
