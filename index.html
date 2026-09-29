@@ -7,11 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
       --bg-1: #0a0a0e;
@@ -30,9 +26,7 @@
       --success: #22c55e;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
       font-family: 'Inter', sans-serif;
@@ -40,12 +34,11 @@
       color: var(--text-primary);
       min-height: 100vh;
       overflow-x: hidden;
-      font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
       -webkit-font-smoothing: antialiased;
       letter-spacing: -0.01em;
     }
 
-    /* ===== MESH GRADIENT BACKGROUND ===== */
+    /* ===== MESH BACKGROUND ===== */
     .bg-mesh {
       position: fixed;
       top: 0;
@@ -75,7 +68,6 @@
       100% { transform: rotate(360deg); }
     }
 
-    /* Noise overlay */
     .bg-mesh::after {
       content: '';
       position: absolute;
@@ -94,10 +86,7 @@
     }
 
     @keyframes fadeInUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .delay-1 { animation-delay: 0.1s; }
@@ -105,9 +94,168 @@
     .delay-3 { animation-delay: 0.3s; }
     .delay-4 { animation-delay: 0.4s; }
     .delay-5 { animation-delay: 0.5s; }
-    .delay-6 { animation-delay: 0.6s; }
 
-    /* ===== HALAMAN LOGIN (SPLIT LAYOUT) ===== */
+    /* ===== LOADING SCREEN ===== */
+    .loading-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--bg-1);
+      z-index: 9999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 20px;
+      transition: opacity 0.6s ease, visibility 0.6s ease;
+    }
+
+    .loading-screen.active {
+      display: flex;
+    }
+
+    .loading-screen.fade-out {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .loading-logo {
+      width: 80px;
+      height: 80px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-bright));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 2rem;
+      color: var(--bg-1);
+      margin-bottom: 24px;
+      animation: logoPulse 1.8s ease-in-out infinite;
+      box-shadow: 0 12px 40px rgba(160, 160, 184, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .loading-logo::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+      animation: logoShine 2s ease-in-out infinite;
+    }
+
+    @keyframes logoShine {
+      0% { left: -100%; }
+      100% { left: 100%; }
+    }
+
+    @keyframes logoPulse {
+      0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 12px 40px rgba(160, 160, 184, 0.2);
+      }
+      50% {
+        transform: scale(1.05);
+        box-shadow: 0 16px 60px rgba(160, 160, 184, 0.35);
+      }
+    }
+
+    .loading-brand {
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+      opacity: 0;
+      animation: fadeInUp 0.6s 0.3s forwards;
+    }
+
+    .loading-subtitle {
+      font-size: 0.75rem;
+      color: var(--text-tertiary);
+      letter-spacing: 0.1em;
+      margin-bottom: 40px;
+      opacity: 0;
+      animation: fadeInUp 0.6s 0.5s forwards;
+    }
+
+    .loading-progress-wrap {
+      width: 100%;
+      max-width: 320px;
+      opacity: 0;
+      animation: fadeInUp 0.6s 0.7s forwards;
+    }
+
+    .loading-progress-bar {
+      width: 100%;
+      height: 3px;
+      background: rgba(160, 160, 184, 0.08);
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .loading-progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--accent), var(--accent-bright));
+      border-radius: 10px;
+      transition: width 0.3s ease;
+      position: relative;
+    }
+
+    .loading-progress-fill::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+      animation: progressShine 1.2s linear infinite;
+    }
+
+    @keyframes progressShine {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+
+    .loading-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 12px;
+      font-size: 0.7rem;
+      color: var(--text-tertiary);
+      letter-spacing: 0.05em;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .loading-status {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .loading-status i {
+      color: var(--accent);
+      font-size: 0.7rem;
+      animation: iconPulse 1s ease-in-out infinite;
+    }
+
+    @keyframes iconPulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    /* ===== HALAMAN LOGIN ===== */
     .login-page {
       min-height: 100vh;
       display: none;
@@ -305,9 +453,7 @@
       animation: shake 0.4s ease;
     }
 
-    .error-msg i {
-      font-size: 0.85rem;
-    }
+    .error-msg i { font-size: 0.85rem; }
 
     @keyframes shake {
       0%, 100% { transform: translateX(0); }
@@ -347,17 +493,11 @@
       transition: left 0.6s ease;
     }
 
-    .btn-login:hover::before {
-      left: 100%;
-    }
+    .btn-login:hover::before { left: 100%; }
 
     .btn-login:hover {
       transform: translateY(-2px);
       box-shadow: 0 12px 28px rgba(160, 160, 184, 0.2);
-    }
-
-    .btn-login:active {
-      transform: translateY(0);
     }
 
     /* ===== HALAMAN UTAMA ===== */
@@ -370,9 +510,7 @@
       z-index: 2;
     }
 
-    .main-page.active {
-      display: block;
-    }
+    .main-page.active { display: block; }
 
     .navbar {
       display: flex;
@@ -434,7 +572,6 @@
       color: var(--text-primary);
     }
 
-    /* ===== HERO ASIMETRIS ===== */
     .hero-layout {
       display: grid;
       grid-template-columns: 1.4fr 1fr;
@@ -519,9 +656,7 @@
       transition: left 0.6s ease;
     }
 
-    .btn-primary:hover::before {
-      left: 100%;
-    }
+    .btn-primary:hover::before { left: 100%; }
 
     .btn-primary:hover {
       transform: translateY(-2px);
@@ -549,7 +684,6 @@
       border-color: var(--border-hover);
     }
 
-    /* ===== INFO CARD (KANAN) ===== */
     .info-card {
       background: linear-gradient(145deg, rgba(28, 28, 36, 0.6), rgba(19, 19, 24, 0.4));
       backdrop-filter: blur(20px);
@@ -584,9 +718,7 @@
       position: relative;
     }
 
-    .info-card .label i {
-      color: var(--accent);
-    }
+    .info-card .label i { color: var(--accent); }
 
     .info-card .value {
       font-family: 'JetBrains Mono', monospace;
@@ -607,7 +739,6 @@
       background: rgba(10, 10, 14, 0.7);
     }
 
-    /* ===== NOTICE BOX ===== */
     .notice {
       display: flex;
       align-items: flex-start;
@@ -649,7 +780,6 @@
       font-weight: 600;
     }
 
-    /* ===== ACCOUNT SECTION ===== */
     .section-header {
       display: flex;
       align-items: center;
@@ -702,15 +832,8 @@
       transform: translateY(-1px);
     }
 
-    .btn-secondary:active {
-      transform: translateY(0);
-    }
+    .btn-secondary i { font-size: 0.85rem; }
 
-    .btn-secondary i {
-      font-size: 0.85rem;
-    }
-
-    /* ===== FOOTER ===== */
     .footer {
       text-align: center;
       margin-top: 80px;
@@ -721,49 +844,17 @@
       letter-spacing: 0.05em;
     }
 
-    .footer i {
-      color: var(--accent);
-      margin: 0 4px;
-    }
+    .footer i { color: var(--accent); margin: 0 4px; }
 
-    /* ===== RESPONSIVE ===== */
     @media (max-width: 900px) {
-      .login-page {
-        grid-template-columns: 1fr;
-      }
-
-      .login-left {
-        padding: 40px 30px;
-        text-align: center;
-        align-items: center;
-      }
-
-      .login-left h1 {
-        font-size: 2rem;
-      }
-
-      .login-left .desc {
-        text-align: center;
-      }
-
-      .features {
-        align-items: center;
-      }
-
-      .login-right {
-        border-left: none;
-        border-top: 1px solid var(--border);
-        padding: 40px 24px;
-      }
-
-      .hero-layout {
-        grid-template-columns: 1fr;
-        gap: 40px;
-      }
-
-      .hero-text h1 {
-        font-size: 2.2rem;
-      }
+      .login-page { grid-template-columns: 1fr; }
+      .login-left { padding: 40px 30px; text-align: center; align-items: center; }
+      .login-left h1 { font-size: 2rem; }
+      .login-left .desc { text-align: center; }
+      .features { align-items: center; }
+      .login-right { border-left: none; border-top: 1px solid var(--border); padding: 40px 24px; }
+      .hero-layout { grid-template-columns: 1fr; gap: 40px; }
+      .hero-text h1 { font-size: 2.2rem; }
     }
 
     @media (max-width: 480px) {
@@ -778,6 +869,26 @@
 <body>
 
   <div class="bg-mesh"></div>
+
+  <!-- ===== LOADING SCREEN ===== -->
+  <div id="loadingScreen" class="loading-screen">
+    <div class="loading-logo">R</div>
+    <div class="loading-brand">AM PREM PRIVATE</div>
+    <div class="loading-subtitle">Menyiapkan akses...</div>
+
+    <div class="loading-progress-wrap">
+      <div class="loading-progress-bar">
+        <div class="loading-progress-fill" id="progressFill"></div>
+      </div>
+      <div class="loading-info">
+        <div class="loading-status">
+          <i class="fas fa-circle"></i>
+          <span id="statusText">Memverifikasi...</span>
+        </div>
+        <span id="percentText">0%</span>
+      </div>
+    </div>
+  </div>
 
   <!-- ===== HALAMAN LOGIN ===== -->
   <div id="loginPage" class="login-page active">
@@ -884,12 +995,12 @@
       </div>
     </div>
 
-    <div class="section-header fade-in-up delay-6">
+    <div class="section-header fade-in-up delay-5">
       <span class="title">Informasi</span>
       <span class="line"></span>
     </div>
 
-    <div class="notice fade-in-up delay-6">
+    <div class="notice fade-in-up delay-5">
       <i class="fas fa-lightbulb"></i>
       <p>
         <strong>Cek Status Email:</strong> Buka generator untuk memastikan email masih aktif.
@@ -903,120 +1014,4 @@
   </div>
 
   <script>
-    const PASSWORD = "091112";
-
-    let akunList = [];
-    let currentAkun = null;
-    let usedIndices = [];
-
-    async function loadAkun() {
-      try {
-        const response = await fetch('akun.json');
-        const rawData = await response.json();
-        akunList = rawData.map(email => ({
-          email: email,
-          generatorLink: `https://generator.email/${email}`
-        }));
-        console.log('Total akun:', akunList.length);
-      } catch (e) {
-        console.error('Gagal load akun.json:', e);
-        akunList = [];
-      }
-    }
-
-    function checkPassword() {
-      const input = document.getElementById('passwordInput').value.trim();
-      const errorMsg = document.getElementById('errorMsg');
-
-      if (input === PASSWORD) {
-        document.getElementById('loginPage').classList.remove('active');
-        document.getElementById('mainPage').classList.add('active');
-        sessionStorage.setItem('loggedIn', 'true');
-        loadAkun().then(() => {
-          ambilAkunBaru();
-        });
-      } else {
-        errorMsg.style.display = 'flex';
-        document.getElementById('passwordInput').value = '';
-        setTimeout(() => {
-          errorMsg.style.display = 'none';
-        }, 3000);
-      }
-    }
-
-    function logout() {
-      sessionStorage.removeItem('loggedIn');
-      document.getElementById('mainPage').classList.remove('active');
-      document.getElementById('loginPage').classList.add('active');
-      document.getElementById('passwordInput').value = '';
-      currentAkun = null;
-      usedIndices = [];
-    }
-
-    function ambilAkunAcak() {
-      if (akunList.length === 0) {
-        alert('Stok akun habis!');
-        return null;
-      }
-      if (usedIndices.length >= akunList.length) {
-        usedIndices = [];
-      }
-      let randomIndex;
-      do {
-        randomIndex = Math.floor(Math.random() * akunList.length);
-      } while (usedIndices.includes(randomIndex));
-      usedIndices.push(randomIndex);
-      return akunList[randomIndex];
-    }
-
-    function tampilkanAkun(akun) {
-      if (!akun) return;
-      currentAkun = akun;
-      document.getElementById('emailDisplay').textContent = akun.email;
-      document.getElementById('generatorDisplay').textContent = akun.generatorLink;
-    }
-
-    function ambilAkunBaru() {
-      const akun = ambilAkunAcak();
-      if (akun) tampilkanAkun(akun);
-    }
-
-    function copyEmail() {
-      if (!currentAkun) {
-        alert('Ambil akun dulu!');
-        return;
-      }
-      navigator.clipboard.writeText(currentAkun.email).then(() => {
-        alert('Email berhasil disalin!');
-      }).catch(() => {
-        alert('Gagal menyalin, copy manual aja.');
-      });
-    }
-
-    function openGenerator() {
-      if (!currentAkun) {
-        alert('Ambil akun dulu!');
-        return;
-      }
-      window.open(currentAkun.generatorLink, '_blank');
-    }
-
-    window.addEventListener('load', function() {
-      if (sessionStorage.getItem('loggedIn') === 'true') {
-        document.getElementById('loginPage').classList.remove('active');
-        document.getElementById('mainPage').classList.add('active');
-        loadAkun().then(() => {
-          ambilAkunBaru();
-        });
-      }
-    });
-
-    document.getElementById('passwordInput').addEventListener('keypress', function(e) {
-      if (e.key === 'Enter') checkPassword();
-    });
-
-    console.log('AM Prem Private Raul siap!');
-  </script>
-
-</body>
-</html>
+    const PASSWORD = "
