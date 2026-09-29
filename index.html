@@ -39,7 +39,6 @@
       letter-spacing: -0.01em;
     }
 
-    /* ===== BACKGROUND ===== */
     .bg-mesh {
       position: fixed;
       top: 0;
@@ -97,16 +96,13 @@
       max-width: 90vw;
       opacity: 0;
     }
-
     .tiktok-notif.show {
       transform: translateX(-50%) translateY(0);
       opacity: 1;
     }
-
     .tiktok-notif:hover {
       border-color: rgba(37, 244, 238, 0.3);
     }
-
     .tiktok-notif .tt-icon {
       width: 42px;
       height: 42px;
@@ -120,12 +116,7 @@
       flex-shrink: 0;
       box-shadow: 0 4px 16px rgba(37, 244, 238, 0.3);
     }
-
-    .tiktok-notif .tt-content {
-      flex: 1;
-      min-width: 0;
-    }
-
+    .tiktok-notif .tt-content { flex: 1; min-width: 0; }
     .tiktok-notif .tt-label {
       font-size: 0.65rem;
       color: var(--text-tertiary);
@@ -134,39 +125,21 @@
       font-weight: 600;
       margin-bottom: 2px;
     }
-
     .tiktok-notif .tt-username {
       font-size: 0.9rem;
       font-weight: 700;
       color: var(--text-primary);
       letter-spacing: -0.01em;
     }
-
     .tiktok-notif .tt-arrow {
       color: var(--text-tertiary);
       font-size: 0.85rem;
       flex-shrink: 0;
       animation: arrowSlide 1.5s ease-in-out infinite;
     }
-
     @keyframes arrowSlide {
       0%, 100% { transform: translateX(0); }
       50% { transform: translateX(4px); }
-    }
-
-    @media (max-width: 480px) {
-      .tiktok-notif {
-        padding: 12px 16px;
-        gap: 10px;
-      }
-      .tiktok-notif .tt-icon {
-        width: 36px;
-        height: 36px;
-        font-size: 1.1rem;
-      }
-      .tiktok-notif .tt-username {
-        font-size: 0.8rem;
-      }
     }
 
     /* ===== FADE-IN-UP ===== */
@@ -202,7 +175,6 @@
     }
     .loading-screen.active { display: flex; }
     .loading-screen.fade-out { opacity: 0; visibility: hidden; }
-
     .loading-logo {
       width: 80px;
       height: 80px;
@@ -238,7 +210,6 @@
       0%, 100% { transform: scale(1); box-shadow: 0 12px 40px rgba(160, 160, 184, 0.2); }
       50% { transform: scale(1.05); box-shadow: 0 16px 60px rgba(160, 160, 184, 0.35); }
     }
-
     .loading-brand {
       font-size: 1.1rem;
       font-weight: 700;
@@ -257,7 +228,6 @@
       opacity: 0;
       animation: fadeInUp 0.6s 0.5s forwards;
     }
-
     .loading-progress-wrap {
       width: 100%;
       max-width: 320px;
@@ -329,7 +299,6 @@
       z-index: 2;
     }
     .login-page.active { display: grid; }
-
     .login-left {
       display: flex;
       flex-direction: column;
@@ -353,7 +322,6 @@
       0%, 100% { transform: scale(1); opacity: 0.6; }
       50% { transform: scale(1.2); opacity: 1; }
     }
-
     .brand-mark {
       display: inline-flex;
       align-items: center;
@@ -381,7 +349,6 @@
       letter-spacing: -0.02em;
       color: var(--text-primary);
     }
-
     .login-left h1 {
       font-size: 2.8rem;
       font-weight: 800;
@@ -424,7 +391,6 @@
       font-size: 0.9rem;
       width: 18px;
     }
-
     .login-right {
       display: flex;
       align-items: center;
@@ -446,7 +412,6 @@
       font-size: 0.85rem;
       color: var(--text-secondary);
     }
-
     .input-wrapper {
       position: relative;
       margin-bottom: 16px;
@@ -480,7 +445,6 @@
       box-shadow: 0 0 0 4px rgba(160, 160, 184, 0.08);
     }
     .input-wrapper:focus-within i { color: var(--accent); }
-
     .error-msg {
       color: var(--danger);
       font-size: 0.8rem;
@@ -496,7 +460,6 @@
       25% { transform: translateX(-4px); }
       75% { transform: translateX(4px); }
     }
-
     .btn-login {
       width: 100%;
       padding: 14px;
@@ -543,7 +506,6 @@
       z-index: 2;
     }
     .main-page.active { display: block; }
-
     .navbar {
       display: flex;
       justify-content: space-between;
@@ -597,7 +559,6 @@
       background: rgba(160, 160, 184, 0.08);
       color: var(--text-primary);
     }
-
     .hero-layout {
       display: grid;
       grid-template-columns: 1.4fr 1fr;
@@ -645,7 +606,6 @@
       gap: 12px;
       flex-wrap: wrap;
     }
-
     .btn-primary {
       background: linear-gradient(135deg, var(--accent), var(--accent-bright));
       border: none;
@@ -679,7 +639,6 @@
       transform: translateY(-2px);
       box-shadow: 0 12px 28px rgba(160, 160, 184, 0.2);
     }
-
     .btn-ghost {
       background: transparent;
       border: 1px solid var(--border);
@@ -699,7 +658,6 @@
       background: rgba(160, 160, 184, 0.06);
       border-color: var(--border-hover);
     }
-
     .info-card {
       background: linear-gradient(145deg, rgba(28, 28, 36, 0.6), rgba(19, 19, 24, 0.4));
       backdrop-filter: blur(20px);
@@ -749,7 +707,6 @@
       border-color: var(--border-hover);
       background: rgba(10, 10, 14, 0.7);
     }
-
     .notice {
       display: flex;
       align-items: flex-start;
@@ -786,7 +743,6 @@
       color: var(--text-primary);
       font-weight: 600;
     }
-
     .section-header {
       display: flex;
       align-items: center;
@@ -805,7 +761,6 @@
       text-transform: uppercase;
       font-weight: 600;
     }
-
     .account-actions {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -835,7 +790,6 @@
       transform: translateY(-1px);
     }
     .btn-secondary i { font-size: 0.85rem; }
-
     .footer {
       text-align: center;
       margin-top: 80px;
@@ -1029,13 +983,114 @@
     let currentAkun = null;
     let usedIndices = [];
 
+    // ===== SOUND EFFECT (WEB AUDIO API - TANPA FILE) =====
+    let audioCtx = null;
+
+    function getAudioContext() {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+      return audioCtx;
+    }
+
+    // Suara klik tombol
+    function playClickSound() {
+      try {
+        const ctx = getAudioContext();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.frequency.value = 800;
+        osc.type = 'sine';
+        gain.gain.value = 0.08;
+        osc.start();
+        gain.gain.exponentialRampToValueAtTime(0.00001, ctx.currentTime + 0.1);
+        osc.stop(ctx.currentTime + 0.1);
+      } catch (e) {}
+    }
+
+    // Suara sukses (nada naik)
+    function playSuccessSound() {
+      try {
+        const ctx = getAudioContext();
+        const notes = [523, 659, 784];
+        notes.forEach((freq, i) => {
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.frequency.value = freq;
+          osc.type = 'sine';
+          gain.gain.value = 0.06;
+          osc.start(ctx.currentTime + i * 0.1);
+          gain.gain.exponentialRampToValueAtTime(0.00001, ctx.currentTime + i * 0.1 + 0.25);
+          osc.stop(ctx.currentTime + i * 0.1 + 0.25);
+        });
+      } catch (e) {}
+    }
+
+    // Suara error (nada turun)
+    function playErrorSound() {
+      try {
+        const ctx = getAudioContext();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.frequency.value = 200;
+        osc.type = 'sawtooth';
+        gain.gain.value = 0.08;
+        osc.start();
+        osc.frequency.exponentialRampToValueAtTime(100, ctx.currentTime + 0.25);
+        gain.gain.exponentialRampToValueAtTime(0.00001, ctx.currentTime + 0.25);
+        osc.stop(ctx.currentTime + 0.25);
+      } catch (e) {}
+    }
+
+    // Suara swoosh (ambil akun)
+    function playSwooshSound() {
+      try {
+        const ctx = getAudioContext();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.frequency.value = 400;
+        osc.type = 'triangle';
+        gain.gain.value = 0.05;
+        osc.start();
+        osc.frequency.exponentialRampToValueAtTime(1200, ctx.currentTime + 0.15);
+        gain.gain.exponentialRampToValueAtTime(0.00001, ctx.currentTime + 0.2);
+        osc.stop(ctx.currentTime + 0.2);
+      } catch (e) {}
+    }
+
+    // Suara ting (copy email)
+    function playTingSound() {
+      try {
+        const ctx = getAudioContext();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.frequency.value = 1200;
+        osc.type = 'sine';
+        gain.gain.value = 0.07;
+        osc.start();
+        gain.gain.exponentialRampToValueAtTime(0.00001, ctx.currentTime + 0.3);
+        osc.stop(ctx.currentTime + 0.3);
+      } catch (e) {}
+    }
+
     // ===== TIKTOK NOTIF =====
     function showTikTokNotif() {
       setTimeout(() => {
         const notif = document.getElementById('tiktokNotif');
         notif.classList.add('show');
-
-        // Auto hide setelah 8 detik
         setTimeout(() => {
           notif.classList.remove('show');
         }, 8000);
@@ -1043,6 +1098,7 @@
     }
 
     function openTikTok() {
+      playClickSound();
       window.open(TIKTOK_URL, '_blank');
     }
 
@@ -1101,6 +1157,7 @@
       const errorMsg = document.getElementById('errorMsg');
 
       if (input === PASSWORD) {
+        playSuccessSound();
         document.getElementById('loginPage').classList.remove('active');
 
         showLoadingScreen(() => {
@@ -1109,10 +1166,10 @@
           loadAkun().then(() => {
             ambilAkunBaru();
           });
-          // Tampilkan notif TikTok
           showTikTokNotif();
         });
       } else {
+        playErrorSound();
         errorMsg.style.display = 'flex';
         document.getElementById('passwordInput').value = '';
         setTimeout(() => {
@@ -1122,6 +1179,7 @@
     }
 
     function logout() {
+      playClickSound();
       sessionStorage.removeItem('loggedIn');
       document.getElementById('mainPage').classList.remove('active');
       document.getElementById('loginPage').classList.add('active');
@@ -1155,11 +1213,13 @@
     }
 
     function ambilAkunBaru() {
+      playSwooshSound();
       const akun = ambilAkunAcak();
       if (akun) tampilkanAkun(akun);
     }
 
     function copyEmail() {
+      playTingSound();
       if (!currentAkun) {
         alert('Ambil akun dulu!');
         return;
@@ -1172,6 +1232,7 @@
     }
 
     function openGenerator() {
+      playClickSound();
       if (!currentAkun) {
         alert('Ambil akun dulu!');
         return;
@@ -1195,8 +1256,8 @@
       if (e.key === 'Enter') checkPassword();
     });
 
-    console.log('AM Prem Private Raul siap!');
+    console.log('AM Prem Private Raul siap dengan sound effect!');
   </script>
 
 </body>
-  </html>
+      </html>
